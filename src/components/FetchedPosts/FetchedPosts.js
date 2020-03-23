@@ -1,20 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Post from "../Post/Post";
 
-class FetchedPosts extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        }
+export default ({posts}) => {
+    if (!posts.length) {
+        return <button className="btn btn-primary">Загрузить посты</button>
     }
-    render() {
-        return (
-            <div>
-                <h1>Post form</h1>
-            </div>
-        );
-    }
+    return posts.map(post=>
+        <Post post={post} key={post}/>
+    )
 }
-
-export default FetchedPosts;
