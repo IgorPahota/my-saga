@@ -14,15 +14,19 @@ class PostForm extends Component {
         event.preventDefault();
 
         const {title} = this.state;
+        if (title.length > 0) {
+            const newPost = {
+                title, id: Date.now().toString()
+            };
+            this.props.createPost(newPost);
+            this.setState({
+                title: ''
+            });
+            console.log(newPost);
+        } else {
+            alert('Невозможно добавить пустой пост!')
+        }
 
-        const newPost = {
-            title, id: Date.now().toString()
-        };
-        this.props.createPost(newPost);
-        this.setState({
-            title: ''
-        });
-        console.log(newPost);
     };
 
     inputChangeHandler = event => {
